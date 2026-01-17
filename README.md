@@ -9,7 +9,7 @@ Based on [Geoffrey Huntley's Ralph pattern](https://ghuntley.com/ralph/).
 ## Prerequisites
 
 - [Claude Code](https://claude.ai/code) installed and authenticated
-- `jq` installed (`brew install jq` on macOS)
+- `jq` installed (`brew install jq` on macOS, `sudo apt install jq` on Debian/Ubuntu)
 - A git repository for your project
 
 ## Setup
