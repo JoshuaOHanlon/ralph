@@ -1,0 +1,23 @@
+# Ralph Platform Settings
+# Copy this file to settings.yaml to customize
+
+worker:
+  # How often to poll for new jobs (milliseconds)
+  pollIntervalMs: 5000
+  # Maximum iterations before marking a job as failed
+  maxIterations: 10
+
+slack:
+  # Restrict bot to specific channels (Slack channel IDs)
+  # Leave empty to allow all channels
+  allowedChannels: []
+  # Maximum jobs a user can queue per hour
+  rateLimitPerHour: 5
+
+docker:
+  # Memory limit for job containers
+  memoryLimit: "4g"
+  # CPU cores limit for job containers
+  cpuLimit: 2
+  # Network mode (none = isolated, bridge = network access)
+  networkMode: "none"

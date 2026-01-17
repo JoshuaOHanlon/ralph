@@ -1,0 +1,33 @@
+{
+  "name": "ralph-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Autonomous AI agent platform for Raspberry Pi 5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/you/ralph-platform"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "db:migrate": "pnpm --filter @ralph/db run migrate",
+    "db:generate": "pnpm --filter @ralph/db run generate",
+    "worker": "pnpm --filter @ralph/worker run start",
+    "bot": "pnpm --filter @ralph/slack-bot run start",
+    "dashboard": "pnpm --filter @ralph/dashboard run start"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.4"
+}

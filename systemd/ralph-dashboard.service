@@ -1,0 +1,27 @@
+[Unit]
+Description=Ralph Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/ralph-platform/apps/dashboard
+Environment=NODE_ENV=production
+Environment=PORT=3001
+EnvironmentFile=/home/pi/ralph-platform/.env
+ExecStart=/usr/bin/node /home/pi/ralph-platform/apps/dashboard/.next/standalone/apps/dashboard/server.js
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ralph-dashboard
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

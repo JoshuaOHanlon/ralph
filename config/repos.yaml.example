@@ -1,0 +1,30 @@
+# Repository Configuration
+# Copy this file to repos.yaml and add your repositories
+
+repos:
+  # Example repository configuration
+  - name: My Project
+    slug: my-project
+    gitUrl: git@github.com:myorg/my-project.git
+    branch: main
+    dockerImage: ralph-my-project:latest
+    keywords:
+      - project
+      - app
+      - feature
+    description: My awesome project
+    enabled: true
+
+  # Another example
+  # - name: Design System
+  #   slug: design-system
+  #   gitUrl: git@github.com:myorg/design-system.git
+  #   branch: main
+  #   dockerImage: ralph-design-system:latest
+  #   keywords:
+  #     - design
+  #     - ui
+  #     - components
+  #     - styling
+  #   description: Shared UI component library
+  #   enabled: true

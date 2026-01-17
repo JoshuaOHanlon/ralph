@@ -1,0 +1,26 @@
+[Unit]
+Description=Ralph Slack Bot
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/ralph-platform
+Environment=NODE_ENV=production
+EnvironmentFile=/home/pi/ralph-platform/.env
+ExecStart=/usr/bin/node /home/pi/ralph-platform/apps/slack-bot/dist/index.js
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ralph-bot
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

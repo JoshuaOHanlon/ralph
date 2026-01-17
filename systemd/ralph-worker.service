@@ -1,0 +1,27 @@
+[Unit]
+Description=Ralph Worker - Job Executor
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/ralph-platform
+Environment=NODE_ENV=production
+EnvironmentFile=/home/pi/ralph-platform/.env
+ExecStart=/usr/bin/node /home/pi/ralph-platform/apps/worker/dist/index.js
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ralph-worker
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
