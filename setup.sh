@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ralph Platform Setup Wizard
+# Ralphberry Platform Setup Wizard
 # Interactive setup for Raspberry Pi 5 and other systems
 
 set -e
@@ -15,7 +15,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 print_header() {
   echo ""
   echo -e "${BLUE}═══════════════════════════════════════════════════════${NC}"
-  echo -e "${BLUE}  Ralph Platform Setup${NC}"
+  echo -e "${BLUE}  Ralphberry Platform Setup${NC}"
   echo -e "${BLUE}═══════════════════════════════════════════════════════${NC}"
   echo ""
 }
@@ -147,7 +147,7 @@ setup_environment() {
 setup_slack() {
   print_step "Slack App Setup"
   echo ""
-  print_info "You'll need to create a Slack app to use Ralph with Slack."
+  print_info "You'll need to create a Slack app to use Ralphberry with Slack."
   print_info "1. Go to https://api.slack.com/apps"
   print_info "2. Click 'Create New App' → 'From a manifest'"
   print_info "3. Select your workspace"
@@ -188,7 +188,7 @@ setup_slack() {
 setup_tunnel() {
   print_step "Cloudflare Tunnel Setup (Optional)"
   echo ""
-  print_info "A Cloudflare Tunnel allows external access to Ralph"
+  print_info "A Cloudflare Tunnel allows external access to Ralphberry"
   print_info "without port forwarding. This is optional."
   echo ""
 
@@ -211,8 +211,8 @@ setup_tunnel() {
     cloudflared tunnel login
 
     print_info "Creating tunnel..."
-    read -p "  Tunnel name (default: ralph): " tunnel_name
-    tunnel_name=${tunnel_name:-ralph}
+    read -p "  Tunnel name (default: ralphberry): " tunnel_name
+    tunnel_name=${tunnel_name:-ralphberry}
 
     cloudflared tunnel create "$tunnel_name"
 
@@ -271,8 +271,8 @@ build_docker() {
   cd "$SCRIPT_DIR"
 
   # Build base image
-  docker build -t ralph-base:latest -f docker/base/Dockerfile .
-  print_success "Built ralph-base:latest"
+  docker build -t ralphberry-base:latest -f docker/base/Dockerfile .
+  print_success "Built ralphberry-base:latest"
 
   echo ""
 }
@@ -295,7 +295,7 @@ add_first_repo() {
     read -p "  Description: " description
 
     # Build repo-specific Docker image
-    docker_image="ralph-${repo_slug}:latest"
+    docker_image="ralphberry-${repo_slug}:latest"
 
     # Clone repo for building
     print_info "Cloning repository..."
@@ -307,7 +307,7 @@ add_first_repo() {
       docker build -t "$docker_image" -f "$SCRIPT_DIR/repos/$repo_slug/Dockerfile.ralph" "$SCRIPT_DIR/repos/$repo_slug"
     else
       print_info "Using base Docker image..."
-      docker tag ralph-base:latest "$docker_image"
+      docker tag ralphberry-base:latest "$docker_image"
     fi
 
     print_success "Repository added: $repo_name"
@@ -336,7 +336,7 @@ print_completion() {
   echo -e "${GREEN}  Setup Complete!${NC}"
   echo -e "${GREEN}═══════════════════════════════════════════════════════${NC}"
   echo ""
-  echo "  Start Ralph with Docker Compose:"
+  echo "  Start Ralphberry with Docker Compose:"
   echo "    docker compose up -d"
   echo ""
   echo "  Or start services individually:"

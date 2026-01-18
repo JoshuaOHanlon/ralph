@@ -1,10 +1,10 @@
 import type { App } from "@slack/bolt";
-import { handleRalphCommand } from "./ralph.js";
+import { handleRalphberryCommand } from "./ralphberry.js";
 import { handleReposCommand } from "./repos.js";
 
 export function registerCommands(app: App) {
-  // /ralph - Main command for creating jobs
-  app.command("/ralph", handleRalphCommand);
+  // /ralphberry - Main command for creating jobs
+  app.command("/ralphberry", handleRalphberryCommand);
 
   // /repos - Repository management
   app.command("/repos", handleReposCommand);

@@ -1,6 +1,6 @@
 # Cloudflare Tunnel Setup
 
-Cloudflare Tunnel provides secure external access to Ralph without port forwarding or exposing your IP address.
+Cloudflare Tunnel provides secure external access to Ralphberry without port forwarding or exposing your IP address.
 
 ## Why Use a Tunnel?
 
@@ -48,7 +48,7 @@ This opens a browser window. Select the domain you want to use.
 ### 3. Create a Tunnel
 
 ```bash
-cloudflared tunnel create ralph
+cloudflared tunnel create ralphberry
 ```
 
 This creates a tunnel and outputs credentials. Note the tunnel ID.
@@ -56,7 +56,7 @@ This creates a tunnel and outputs credentials. Note the tunnel ID.
 ### 4. Configure DNS
 
 ```bash
-cloudflared tunnel route dns ralph ralph.yourdomain.com
+cloudflared tunnel route dns ralphberry ralphberry.yourdomain.com
 ```
 
 Replace `yourdomain.com` with your actual domain.
@@ -70,9 +70,9 @@ tunnel: YOUR_TUNNEL_ID
 credentials-file: /home/pi/.cloudflared/YOUR_TUNNEL_ID.json
 
 ingress:
-  - hostname: ralph.yourdomain.com
+  - hostname: ralphberry.yourdomain.com
     service: http://localhost:3000
-  - hostname: ralph-dashboard.yourdomain.com
+  - hostname: ralphberry-dashboard.yourdomain.com
     service: http://localhost:3001
   - service: http_status:404
 ```
@@ -106,7 +106,7 @@ docker compose --profile tunnel up -d
 #### Standalone
 
 ```bash
-cloudflared tunnel run ralph
+cloudflared tunnel run ralphberry
 ```
 
 #### As a Service
@@ -124,11 +124,11 @@ If using a custom domain for webhooks:
 1. Go to your Slack app settings
 2. Under **Interactivity & Shortcuts**, set Request URL to:
    ```
-   https://ralph.yourdomain.com/slack/events
+   https://ralphberry.yourdomain.com/slack/events
    ```
 3. Under **Event Subscriptions**, set Request URL to:
    ```
-   https://ralph.yourdomain.com/slack/events
+   https://ralphberry.yourdomain.com/slack/events
    ```
 
 Note: With Socket Mode enabled (recommended), you don't need to configure request URLs.
@@ -149,17 +149,17 @@ This creates a temporary `*.trycloudflare.com` URL that lasts until you stop the
 
 ```bash
 # Check tunnel status
-cloudflared tunnel info ralph
+cloudflared tunnel info ralphberry
 
 # Test connectivity
-curl https://ralph.yourdomain.com/health
+curl https://ralphberry.yourdomain.com/health
 ```
 
 ### DNS not resolving
 
 ```bash
 # Verify DNS record
-dig ralph.yourdomain.com
+dig ralphberry.yourdomain.com
 
 # Check Cloudflare DNS settings
 ```

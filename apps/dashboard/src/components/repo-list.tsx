@@ -1,6 +1,6 @@
 "use client";
 
-import type { Repo } from "@ralph/core";
+import type { Repo } from "@ralphberry/core";
 
 interface RepoListProps {
   repos: Repo[];

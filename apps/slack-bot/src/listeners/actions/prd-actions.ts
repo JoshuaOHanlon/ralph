@@ -1,7 +1,7 @@
 import type { AllMiddlewareArgs, SlackActionMiddlewareArgs, ButtonAction } from "@slack/bolt";
-import { queue } from "@ralph/queue";
-import { getRepoById } from "@ralph/db";
-import type { Prd } from "@ralph/core";
+import { queue } from "@ralphberry/queue";
+import { getRepoById } from "@ralphberry/db";
+import type { Prd } from "@ralphberry/core";
 import { sendJobStartedNotification } from "../../services/notifications.js";
 
 export async function handleConfirmPrd({

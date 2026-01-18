@@ -1,6 +1,6 @@
 import { eq, and, desc, sql, asc, ne, or } from "drizzle-orm";
 import { randomUUID } from "crypto";
-import type { CreateJob, Job, JobStatus, Prd, CreateJobLog, JobLog } from "@ralph/core";
+import type { CreateJob, Job, JobStatus, Prd, CreateJobLog, JobLog } from "@ralphberry/core";
 import { jobs, jobLogs, type JobRow, type JobLogRow } from "./schema.js";
 import { getDb } from "./client.js";
 

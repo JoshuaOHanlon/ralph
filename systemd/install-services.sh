@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install Ralph systemd services
+# Install Ralphberry systemd services
 # Run as root: sudo ./install-services.sh
 
 set -e
@@ -14,7 +14,7 @@ else
   RALPH_USER="pi"
 fi
 
-echo "Installing Ralph systemd services..."
+echo "Installing Ralphberry systemd services..."
 echo "  User: $RALPH_USER"
 echo "  Directory: $RALPH_DIR"
 echo ""
@@ -27,7 +27,7 @@ update_service() {
   cp "$SCRIPT_DIR/$service" "$tmp_file"
 
   # Replace paths and user
-  sed -i "s|/home/pi/ralph-platform|$RALPH_DIR|g" "$tmp_file"
+  sed -i "s|/home/pi/ralphberry-platform|$RALPH_DIR|g" "$tmp_file"
   sed -i "s|User=pi|User=$RALPH_USER|g" "$tmp_file"
   sed -i "s|Group=pi|Group=$RALPH_USER|g" "$tmp_file"
 
@@ -39,9 +39,9 @@ update_service() {
 }
 
 # Install each service
-update_service "ralph-worker.service"
-update_service "ralph-bot.service"
-update_service "ralph-dashboard.service"
+update_service "ralphberry-worker.service"
+update_service "ralphberry-bot.service"
+update_service "ralphberry-dashboard.service"
 
 # Reload systemd
 systemctl daemon-reload
@@ -50,21 +50,21 @@ echo ""
 echo "Services installed. Available commands:"
 echo ""
 echo "  Start services:"
-echo "    sudo systemctl start ralph-worker"
-echo "    sudo systemctl start ralph-bot"
-echo "    sudo systemctl start ralph-dashboard"
+echo "    sudo systemctl start ralphberry-worker"
+echo "    sudo systemctl start ralphberry-bot"
+echo "    sudo systemctl start ralphberry-dashboard"
 echo ""
 echo "  Enable on boot:"
-echo "    sudo systemctl enable ralph-worker"
-echo "    sudo systemctl enable ralph-bot"
-echo "    sudo systemctl enable ralph-dashboard"
+echo "    sudo systemctl enable ralphberry-worker"
+echo "    sudo systemctl enable ralphberry-bot"
+echo "    sudo systemctl enable ralphberry-dashboard"
 echo ""
 echo "  View logs:"
-echo "    journalctl -u ralph-worker -f"
-echo "    journalctl -u ralph-bot -f"
-echo "    journalctl -u ralph-dashboard -f"
+echo "    journalctl -u ralphberry-worker -f"
+echo "    journalctl -u ralphberry-bot -f"
+echo "    journalctl -u ralphberry-dashboard -f"
 echo ""
 echo "  Start all at once:"
-echo "    sudo systemctl start ralph-worker ralph-bot ralph-dashboard"
-echo "    sudo systemctl enable ralph-worker ralph-bot ralph-dashboard"
+echo "    sudo systemctl start ralphberry-worker ralphberry-bot ralphberry-dashboard"
+echo "    sudo systemctl enable ralphberry-worker ralphberry-bot ralphberry-dashboard"
 echo ""

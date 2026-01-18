@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ralph Platform Diagnostics
+# Ralphberry Platform Diagnostics
 # Checks all components and connectivity
 
 set -e
@@ -24,7 +24,7 @@ check_fail() {
 }
 
 echo ""
-echo "Ralph Platform Diagnostics"
+echo "Ralphberry Platform Diagnostics"
 echo "=========================="
 echo ""
 
@@ -127,13 +127,13 @@ fi
 echo ""
 
 # Check database
-if [ -f "$SCRIPT_DIR/data/ralph.db" ]; then
+if [ -f "$SCRIPT_DIR/data/ralphberry.db" ]; then
   check_pass "Database exists"
 
   # Count repos
   if command -v sqlite3 &> /dev/null; then
-    REPO_COUNT=$(sqlite3 "$SCRIPT_DIR/data/ralph.db" "SELECT COUNT(*) FROM repos" 2>/dev/null || echo "0")
-    JOB_COUNT=$(sqlite3 "$SCRIPT_DIR/data/ralph.db" "SELECT COUNT(*) FROM jobs WHERE status='pending'" 2>/dev/null || echo "0")
+    REPO_COUNT=$(sqlite3 "$SCRIPT_DIR/data/ralphberry.db" "SELECT COUNT(*) FROM repos" 2>/dev/null || echo "0")
+    JOB_COUNT=$(sqlite3 "$SCRIPT_DIR/data/ralphberry.db" "SELECT COUNT(*) FROM jobs WHERE status='pending'" 2>/dev/null || echo "0")
     check_pass "$REPO_COUNT repositories configured"
     if [ "$JOB_COUNT" = "0" ]; then
       check_warn "No jobs in queue (that's ok!)"
@@ -152,11 +152,11 @@ echo ""
 
 # Check Docker images
 if command -v docker &> /dev/null && docker info &> /dev/null 2>&1; then
-  if docker image inspect ralph-base:latest &> /dev/null; then
-    check_pass "ralph-base:latest Docker image exists"
+  if docker image inspect ralphberry-base:latest &> /dev/null; then
+    check_pass "ralphberry-base:latest Docker image exists"
   else
-    check_warn "ralph-base:latest Docker image not built"
-    echo "  Run: docker build -t ralph-base:latest -f docker/base/Dockerfile ."
+    check_warn "ralphberry-base:latest Docker image not built"
+    echo "  Run: docker build -t ralphberry-base:latest -f docker/base/Dockerfile ."
   fi
 fi
 

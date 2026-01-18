@@ -1,6 +1,6 @@
 #!/bin/bash
-# Ralph Runner - Executes inside Docker container
-# Runs the ralph loop for a single job
+# Ralphberry Runner - Executes inside Docker container
+# Runs the ralphberry loop for a single job
 
 set -e
 
@@ -17,13 +17,13 @@ fi
 
 # Initialize progress file if it doesn't exist
 if [ ! -f "$PROGRESS_FILE" ]; then
-  echo "# Ralph Progress Log" > "$PROGRESS_FILE"
+  echo "# Ralphberry Progress Log" > "$PROGRESS_FILE"
   echo "Started: $(date)" >> "$PROGRESS_FILE"
   echo "Repo: ${REPO_NAME:-unknown}" >> "$PROGRESS_FILE"
   echo "---" >> "$PROGRESS_FILE"
 fi
 
-echo "Starting Ralph Runner"
+echo "Starting Ralphberry Runner"
 echo "  Max iterations: $MAX_ITERATIONS"
 echo "  Repo: ${REPO_NAME:-unknown}"
 echo "  PRD: $PRD_FILE"
@@ -33,7 +33,7 @@ PROMPT_FILE="/workspace/prompt.md"
 if [ ! -f "$PROMPT_FILE" ]; then
   # Use default prompt if not provided
   cat > "$PROMPT_FILE" << 'PROMPT_EOF'
-# Ralph Agent Instructions
+# Ralphberry Agent Instructions
 
 You are an autonomous coding agent working on a software project.
 
@@ -71,7 +71,7 @@ fi
 for i in $(seq 1 $MAX_ITERATIONS); do
   echo ""
   echo "═══════════════════════════════════════════════════════"
-  echo "  Ralph Iteration $i of $MAX_ITERATIONS"
+  echo "  Ralphberry Iteration $i of $MAX_ITERATIONS"
   echo "═══════════════════════════════════════════════════════"
 
   # Run claude with the ralph prompt
@@ -80,11 +80,11 @@ for i in $(seq 1 $MAX_ITERATIONS); do
   # Check for completion signal
   if echo "$OUTPUT" | grep -q "<promise>COMPLETE</promise>"; then
     echo ""
-    echo "Ralph completed all tasks!"
+    echo "Ralphberry completed all tasks!"
     echo "Completed at iteration $i of $MAX_ITERATIONS"
 
     # Write completion marker
-    echo "COMPLETE" > /workspace/.ralph-status
+    echo "COMPLETE" > /workspace/.ralphberry-status
     exit 0
   fi
 
@@ -93,9 +93,9 @@ for i in $(seq 1 $MAX_ITERATIONS); do
 done
 
 echo ""
-echo "Ralph reached max iterations ($MAX_ITERATIONS) without completing all tasks."
+echo "Ralphberry reached max iterations ($MAX_ITERATIONS) without completing all tasks."
 echo "Check $PROGRESS_FILE for status."
 
 # Write incomplete marker
-echo "INCOMPLETE" > /workspace/.ralph-status
+echo "INCOMPLETE" > /workspace/.ralphberry-status
 exit 1

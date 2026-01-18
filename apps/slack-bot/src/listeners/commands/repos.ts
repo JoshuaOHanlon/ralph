@@ -1,5 +1,5 @@
 import type { AllMiddlewareArgs, SlackCommandMiddlewareArgs } from "@slack/bolt";
-import { getAllRepos, getRepoBySlug, deleteRepo } from "@ralph/db";
+import { getAllRepos, getRepoBySlug, deleteRepo } from "@ralphberry/db";
 import { formatRepoList } from "../../blocks/repo-list.js";
 import { openAddRepoModal, openEditRepoModal } from "../../services/repo-manager.js";
 

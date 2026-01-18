@@ -5,7 +5,7 @@ import * as schema from "./schema.js";
 import { mkdirSync, existsSync } from "fs";
 import { dirname } from "path";
 
-const dbPath = process.env.DATABASE_PATH ?? "./data/ralph.db";
+const dbPath = process.env.DATABASE_PATH ?? "./data/ralphberry.db";
 
 // Ensure data directory exists
 const dataDir = dirname(dbPath);

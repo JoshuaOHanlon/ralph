@@ -1,23 +1,23 @@
 [Unit]
-Description=Ralph Dashboard
+Description=Ralphberry Dashboard
 After=network.target
 
 [Service]
 Type=simple
 User=pi
 Group=pi
-WorkingDirectory=/home/pi/ralph-platform/apps/dashboard
+WorkingDirectory=/home/pi/ralphberry-platform/apps/dashboard
 Environment=NODE_ENV=production
 Environment=PORT=3001
-EnvironmentFile=/home/pi/ralph-platform/.env
-ExecStart=/usr/bin/node /home/pi/ralph-platform/apps/dashboard/.next/standalone/apps/dashboard/server.js
+EnvironmentFile=/home/pi/ralphberry-platform/.env
+ExecStart=/usr/bin/node /home/pi/ralphberry-platform/apps/dashboard/.next/standalone/apps/dashboard/server.js
 Restart=always
 RestartSec=10
 
 # Logging
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=ralph-dashboard
+SyslogIdentifier=ralphberry-dashboard
 
 # Security
 NoNewPrivileges=true

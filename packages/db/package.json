@@ -1,5 +1,5 @@
 {
-  "name": "@ralph/db",
+  "name": "@ralphberry/db",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -19,7 +19,7 @@
     "migrate": "tsx src/migrate.ts"
   },
   "dependencies": {
-    "@ralph/core": "workspace:*",
+    "@ralphberry/core": "workspace:*",
     "better-sqlite3": "^11.7.0",
     "drizzle-orm": "^0.38.4"
   },

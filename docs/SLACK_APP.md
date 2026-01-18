@@ -1,6 +1,6 @@
 # Slack App Setup Guide
 
-This guide walks through creating and configuring a Slack app for Ralph.
+This guide walks through creating and configuring a Slack app for Ralphberry.
 
 ## Create the Slack App
 
@@ -17,7 +17,7 @@ This guide walks through creating and configuring a Slack app for Ralph.
 
 1. Go to https://api.slack.com/apps
 2. Click **Create New App** → **From scratch**
-3. Name it "Ralph" and select your workspace
+3. Name it "Ralphberry" and select your workspace
 
 #### Configure OAuth Scopes
 
@@ -41,7 +41,7 @@ Go to **OAuth & Permissions** and add these Bot Token Scopes:
 
 Go to **Socket Mode** and:
 1. Toggle **Enable Socket Mode** to ON
-2. Give the token a name (e.g., "ralph-socket")
+2. Give the token a name (e.g., "ralphberry-socket")
 3. Copy the App-Level Token (`xapp-...`) - you'll need this
 
 #### Configure Slash Commands
@@ -50,7 +50,7 @@ Go to **Slash Commands** and add:
 
 | Command | Description | Usage Hint |
 |---------|-------------|------------|
-| `/ralph` | Create a new task for Ralph | add dark mode to design system |
+| `/ralphberry` | Create a new task for Ralphberry | add dark mode to design system |
 | `/repos` | Manage repositories | list \| add \| edit <slug> \| remove <slug> |
 
 #### Enable Events
@@ -87,7 +87,7 @@ You need three tokens:
 | Signing Secret | Basic Information → App Credentials | (hex string) |
 | App Token | Basic Information → App-Level Tokens | `xapp-` |
 
-## Configure Ralph
+## Configure Ralphberry
 
 Add the tokens to your `.env` file:
 
@@ -99,7 +99,7 @@ SLACK_APP_TOKEN=xapp-your-app-token
 
 ## Channel Configuration (Optional)
 
-To restrict Ralph to specific channels:
+To restrict Ralphberry to specific channels:
 
 1. Get the channel ID:
    - Right-click on a channel in Slack
@@ -111,26 +111,26 @@ To restrict Ralph to specific channels:
    SLACK_ALLOWED_CHANNELS=C0123456789,C9876543210
    ```
 
-## Invite Ralph to Channels
+## Invite Ralphberry to Channels
 
-After installing, invite Ralph to the channels where it should respond:
+After installing, invite Ralphberry to the channels where it should respond:
 
 ```
-/invite @Ralph
+/invite @Ralphberry
 ```
 
 ## Test the Integration
 
 1. In an allowed channel, type:
    ```
-   @ralph hello
+   @ralphberry hello
    ```
 
-2. Ralph should respond with a greeting
+2. Ralphberry should respond with a greeting
 
 3. Try creating a task:
    ```
-   /ralph add a button to the homepage
+   /ralphberry add a button to the homepage
    ```
 
 ## Troubleshooting

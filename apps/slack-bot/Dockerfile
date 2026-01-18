@@ -1,4 +1,4 @@
-# Ralph Slack Bot Dockerfile
+# Ralphberry Slack Bot Dockerfile
 FROM node:22-slim
 
 # Install curl for health checks

@@ -1,6 +1,6 @@
 #!/bin/bash
-# Ralph Wiggum - Long-running AI agent loop
-# Usage: ./ralph.sh [max_iterations]
+# Ralphberry - Long-running AI agent loop
+# Usage: ./ralphberry.sh [max_iterations]
 
 set -e
 
@@ -19,8 +19,8 @@ if [ -f "$PRD_FILE" ] && [ -f "$LAST_BRANCH_FILE" ]; then
   if [ -n "$CURRENT_BRANCH" ] && [ -n "$LAST_BRANCH" ] && [ "$CURRENT_BRANCH" != "$LAST_BRANCH" ]; then
     # Archive the previous run
     DATE=$(date +%Y-%m-%d)
-    # Strip "ralph/" prefix from branch name for folder
-    FOLDER_NAME=$(echo "$LAST_BRANCH" | sed 's|^ralph/||')
+    # Strip "ralphberry/" prefix from branch name for folder
+    FOLDER_NAME=$(echo "$LAST_BRANCH" | sed 's|^ralphberry/||')
     ARCHIVE_FOLDER="$ARCHIVE_DIR/$DATE-$FOLDER_NAME"
     
     echo "Archiving previous run: $LAST_BRANCH"
@@ -30,7 +30,7 @@ if [ -f "$PRD_FILE" ] && [ -f "$LAST_BRANCH_FILE" ]; then
     echo "   Archived to: $ARCHIVE_FOLDER"
     
     # Reset progress file for new run
-    echo "# Ralph Progress Log" > "$PROGRESS_FILE"
+    echo "# Ralphberry Progress Log" > "$PROGRESS_FILE"
     echo "Started: $(date)" >> "$PROGRESS_FILE"
     echo "---" >> "$PROGRESS_FILE"
   fi
@@ -46,17 +46,17 @@ fi
 
 # Initialize progress file if it doesn't exist
 if [ ! -f "$PROGRESS_FILE" ]; then
-  echo "# Ralph Progress Log" > "$PROGRESS_FILE"
+  echo "# Ralphberry Progress Log" > "$PROGRESS_FILE"
   echo "Started: $(date)" >> "$PROGRESS_FILE"
   echo "---" >> "$PROGRESS_FILE"
 fi
 
-echo "Starting Ralph - Max iterations: $MAX_ITERATIONS"
+echo "Starting Ralphberry - Max iterations: $MAX_ITERATIONS"
 
 for i in $(seq 1 $MAX_ITERATIONS); do
   echo ""
   echo "═══════════════════════════════════════════════════════"
-  echo "  Ralph Iteration $i of $MAX_ITERATIONS"
+  echo "  Ralphberry Iteration $i of $MAX_ITERATIONS"
   echo "═══════════════════════════════════════════════════════"
   
   # Run claude with the ralph prompt
@@ -65,7 +65,7 @@ for i in $(seq 1 $MAX_ITERATIONS); do
   # Check for completion signal
   if echo "$OUTPUT" | grep -q "<promise>COMPLETE</promise>"; then
     echo ""
-    echo "Ralph completed all tasks!"
+    echo "Ralphberry completed all tasks!"
     echo "Completed at iteration $i of $MAX_ITERATIONS"
     exit 0
   fi
@@ -75,7 +75,7 @@ for i in $(seq 1 $MAX_ITERATIONS); do
 done
 
 echo ""
-echo "Ralph reached max iterations ($MAX_ITERATIONS) without completing all tasks."
+echo "Ralphberry reached max iterations ($MAX_ITERATIONS) without completing all tasks."
 echo "Check $PROGRESS_FILE for status."
 exit 1
 

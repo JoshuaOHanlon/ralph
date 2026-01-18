@@ -13,7 +13,7 @@ function createDatabase(dbPath: string) {
 
 export function getDb(dbPath?: string) {
   if (!db) {
-    const path = dbPath ?? process.env.DATABASE_PATH ?? "./data/ralph.db";
+    const path = dbPath ?? process.env.DATABASE_PATH ?? "./data/ralphberry.db";
     db = createDatabase(path);
   }
   return db;

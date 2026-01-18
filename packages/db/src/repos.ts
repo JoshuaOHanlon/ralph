@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { randomUUID } from "crypto";
-import type { CreateRepo, UpdateRepo, Repo } from "@ralph/core";
+import type { CreateRepo, UpdateRepo, Repo } from "@ralphberry/core";
 import { repos, type RepoRow } from "./schema.js";
 import { getDb } from "./client.js";
 

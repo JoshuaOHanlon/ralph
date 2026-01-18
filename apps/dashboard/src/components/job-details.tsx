@@ -1,6 +1,6 @@
 "use client";
 
-import type { Job, Repo } from "@ralph/core";
+import type { Job, Repo } from "@ralphberry/core";
 
 interface JobDetailsProps {
   job: Job;

@@ -1,5 +1,5 @@
 import type { WebClient } from "@slack/web-api";
-import type { Job, Repo } from "@ralph/core";
+import type { Job, Repo } from "@ralphberry/core";
 
 interface JobNotificationParams {
   channelId: string;

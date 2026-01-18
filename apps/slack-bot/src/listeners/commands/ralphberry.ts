@@ -1,10 +1,10 @@
 import type { AllMiddlewareArgs, SlackCommandMiddlewareArgs } from "@slack/bolt";
-import { getEnabledRepos } from "@ralph/db";
+import { getEnabledRepos } from "@ralphberry/db";
 import { classifyRepo } from "../../services/classifier.js";
 import { startPrdConversation } from "../../services/prd-conversation.js";
 import { isChannelAllowed } from "../../services/channel-guard.js";
 
-export async function handleRalphCommand({
+export async function handleRalphberryCommand({
   command,
   ack,
   respond,
@@ -15,7 +15,7 @@ export async function handleRalphCommand({
   // Check channel restrictions
   if (!isChannelAllowed(command.channel_id)) {
     await respond({
-      text: "Sorry, Ralph is not available in this channel.",
+      text: "Sorry, Ralphberry is not available in this channel.",
       response_type: "ephemeral",
     });
     return;
@@ -25,7 +25,7 @@ export async function handleRalphCommand({
 
   if (!text) {
     await respond({
-      text: "Please describe what you'd like to do. Example: `/ralph add dark mode to the design system`",
+      text: "Please describe what you'd like to do. Example: `/ralphberry add dark mode to the design system`",
       response_type: "ephemeral",
     });
     return;

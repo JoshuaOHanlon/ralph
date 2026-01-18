@@ -25,7 +25,7 @@ npm-debug.log*
 pnpm-debug.log*
 
 # Runtime
-.ralph-status
+.ralphberry-status
 progress.txt
 prd.json
 

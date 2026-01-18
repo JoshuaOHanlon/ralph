@@ -11,7 +11,7 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=production
-      - DATABASE_PATH=/data/ralph.db
+      - DATABASE_PATH=/data/ralphberry.db
     volumes:
       - ./data:/data
     depends_on:
@@ -33,7 +33,7 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=production
-      - DATABASE_PATH=/data/ralph.db
+      - DATABASE_PATH=/data/ralphberry.db
     volumes:
       - ./data:/data
     restart: unless-stopped
@@ -51,7 +51,7 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=production
-      - DATABASE_PATH=/data/ralph.db
+      - DATABASE_PATH=/data/ralphberry.db
     volumes:
       - ./data:/data
       - /var/run/docker.sock:/var/run/docker.sock

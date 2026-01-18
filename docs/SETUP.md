@@ -1,6 +1,6 @@
-# Ralph Platform - Detailed Setup Guide
+# Ralphberry Platform - Detailed Setup Guide
 
-This guide walks through setting up Ralph Platform on a Raspberry Pi 5 or any Linux/macOS system.
+This guide walks through setting up Ralphberry Platform on a Raspberry Pi 5 or any Linux/macOS system.
 
 ## Prerequisites
 
@@ -52,8 +52,8 @@ brew install jq      # macOS
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/you/ralph-platform
-cd ralph-platform
+git clone https://github.com/you/ralphberry-platform
+cd ralphberry-platform
 ```
 
 ### 2. Configure Environment
@@ -103,7 +103,7 @@ pnpm run build
 
 ```bash
 # Build the base image
-docker build -t ralph-base:latest -f docker/base/Dockerfile .
+docker build -t ralphberry-base:latest -f docker/base/Dockerfile .
 ```
 
 ### 7. Add a Repository
@@ -122,7 +122,7 @@ Build a repo-specific Docker image (optional):
 docker build -t ralph-your-repo:latest -f repos/your-repo/Dockerfile.ralph .
 
 # Or just tag the base image
-docker tag ralph-base:latest ralph-your-repo:latest
+docker tag ralphberry-base:latest ralph-your-repo:latest
 ```
 
 ### 8. Start Services
@@ -158,12 +158,12 @@ pnpm run dashboard
 sudo ./systemd/install-services.sh
 
 # Control services
-sudo systemctl start ralph-worker
-sudo systemctl start ralph-bot
-sudo systemctl start ralph-dashboard
+sudo systemctl start ralphberry-worker
+sudo systemctl start ralphberry-bot
+sudo systemctl start ralphberry-dashboard
 
 # View logs
-journalctl -u ralph-worker -f
+journalctl -u ralphberry-worker -f
 ```
 
 ### 9. Verify Setup
@@ -182,7 +182,7 @@ Expected output:
 ✓ Anthropic API key valid
 ✓ Slack bot connected
 ✓ Database exists
-✓ ralph-base:latest Docker image exists
+✓ ralphberry-base:latest Docker image exists
 ✓ Slack Bot running on port 3000
 ✓ Dashboard running on port 3001
 ```
@@ -214,7 +214,7 @@ Fill in the modal:
 
 ```bash
 # Using sqlite3
-sqlite3 data/ralph.db "INSERT INTO repos (id, name, slug, git_url, branch, docker_image, keywords, description, enabled, created_at) VALUES ('uuid', 'My Repo', 'my-repo', 'git@github.com:org/repo.git', 'main', 'ralph-my-repo:latest', '[\"keyword1\", \"keyword2\"]', 'Description', 1, $(date +%s)000)"
+sqlite3 data/ralphberry.db "INSERT INTO repos (id, name, slug, git_url, branch, docker_image, keywords, description, enabled, created_at) VALUES ('uuid', 'My Repo', 'my-repo', 'git@github.com:org/repo.git', 'main', 'ralph-my-repo:latest', '[\"keyword1\", \"keyword2\"]', 'Description', 1, $(date +%s)000)"
 ```
 
 ## Cloudflare Tunnel Setup

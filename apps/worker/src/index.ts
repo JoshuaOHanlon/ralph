@@ -1,5 +1,5 @@
-import { queue } from "@ralph/queue";
-import { getRepoById } from "@ralph/db";
+import { queue } from "@ralphberry/queue";
+import { getRepoById } from "@ralphberry/db";
 import { JobExecutor } from "./executor.js";
 
 const POLL_INTERVAL = parseInt(process.env.WORKER_POLL_INTERVAL ?? "5000", 10);
@@ -75,7 +75,7 @@ process.on("SIGTERM", () => shutdown("SIGTERM"));
 process.on("SIGINT", () => shutdown("SIGINT"));
 
 // Start the worker
-console.log("[Worker] Starting Ralph Worker");
+console.log("[Worker] Starting Ralphberry Worker");
 console.log(`[Worker] Poll interval: ${POLL_INTERVAL}ms`);
 
 // Initial poll

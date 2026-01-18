@@ -1,5 +1,5 @@
 import type { WebClient } from "@slack/web-api";
-import type { Repo, Prd, UserStory } from "@ralph/core";
+import type { Repo, Prd, UserStory } from "@ralphberry/core";
 
 // In-memory store for active PRD conversations
 const activeConversations = new Map<
@@ -239,7 +239,7 @@ function generatePrd(repo: Repo, description: string, answers: string[]): Prd {
 
   return {
     project: repo.name,
-    branchName: `ralph/${slug}`,
+    branchName: `ralphberry/${slug}`,
     description: `${description} - ${repo.name}`,
     userStories: stories,
   };

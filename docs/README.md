@@ -1,6 +1,6 @@
-# Ralph Platform
+# Ralphberry Platform
 
-Autonomous AI agent platform for software development. Ralph runs Claude Code in isolated Docker containers, executing tasks defined in PRDs (Product Requirements Documents).
+Autonomous AI agent platform for software development. Ralphberry runs Claude Code in isolated Docker containers, executing tasks defined in PRDs (Product Requirements Documents).
 
 ## Quick Start
 
@@ -14,8 +14,8 @@ Autonomous AI agent platform for software development. Ralph runs Claude Code in
 ### One-Command Setup
 
 ```bash
-git clone https://github.com/you/ralph-platform
-cd ralph-platform
+git clone https://github.com/you/ralphberry-platform
+cd ralphberry-platform
 ./setup.sh
 ```
 
@@ -45,7 +45,7 @@ pnpm run db:migrate
 pnpm run build
 
 # Build Docker base image
-docker build -t ralph-base:latest -f docker/base/Dockerfile .
+docker build -t ralphberry-base:latest -f docker/base/Dockerfile .
 
 # Start with Docker Compose
 docker compose up -d
@@ -65,7 +65,7 @@ pnpm run dashboard # Web UI
                                │ HTTPS webhook
                                ▼
 ┌──────────────────────────────────────────────────────────────────────┐
-│  Cloudflare Tunnel (ralph.yourdomain.com → localhost:3000)          │
+│  Cloudflare Tunnel (ralphberry.yourdomain.com → localhost:3000)          │
 └──────────────────────────────────────────────────────────────────────┘
                                │
     ┌──────────────────────────┼──────────────────────────────────────┐
@@ -92,20 +92,20 @@ pnpm run dashboard # Web UI
                     └──────────────────┘
 ```
 
-## Using Ralph
+## Using Ralphberry
 
 ### Via Slack
 
-1. Mention Ralph with a task description:
+1. Mention Ralphberry with a task description:
    ```
-   @ralph add dark mode to the design system
+   @ralphberry add dark mode to the design system
    ```
 
 2. Answer the clarifying questions
 
 3. Confirm the generated PRD
 
-4. Ralph queues and executes the job
+4. Ralphberry queues and executes the job
 
 ### Via Dashboard
 
@@ -137,7 +137,7 @@ curl http://localhost:3001/api/jobs/{id}/logs
 ## Project Structure
 
 ```
-ralph-platform/
+ralphberry-platform/
 ├── apps/
 │   ├── slack-bot/      # Bolt.js Slack integration
 │   ├── dashboard/      # Next.js web UI

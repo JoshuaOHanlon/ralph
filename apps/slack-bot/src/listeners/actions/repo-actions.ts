@@ -1,5 +1,5 @@
 import type { AllMiddlewareArgs, SlackActionMiddlewareArgs, ButtonAction } from "@slack/bolt";
-import { deleteRepo } from "@ralph/db";
+import { deleteRepo } from "@ralphberry/db";
 
 export async function handleConfirmRemoveRepo({
   action,

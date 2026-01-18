@@ -1,4 +1,4 @@
-import type { Repo } from "@ralph/core";
+import type { Repo } from "@ralphberry/core";
 import type { KnownBlock } from "@slack/types";
 
 export function formatRepoList(repos: Repo[]): KnownBlock[] {

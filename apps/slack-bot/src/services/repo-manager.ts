@@ -1,5 +1,5 @@
 import type { WebClient } from "@slack/web-api";
-import type { Repo } from "@ralph/core";
+import type { Repo } from "@ralphberry/core";
 
 export async function openAddRepoModal(
   client: WebClient,
@@ -66,7 +66,7 @@ export async function openAddRepoModal(
           element: {
             type: "plain_text_input",
             action_id: "docker_image_input",
-            placeholder: { type: "plain_text", text: "ralph-my-project:latest" },
+            placeholder: { type: "plain_text", text: "ralphberry-my-project:latest" },
           },
         },
         {

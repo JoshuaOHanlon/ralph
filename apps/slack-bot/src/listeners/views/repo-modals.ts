@@ -1,5 +1,5 @@
 import type { AllMiddlewareArgs, SlackViewMiddlewareArgs, SlackViewAction } from "@slack/bolt";
-import { createRepo, updateRepo } from "@ralph/db";
+import { createRepo, updateRepo } from "@ralphberry/db";
 
 export async function handleAddRepoSubmit({
   ack,

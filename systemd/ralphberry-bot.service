@@ -1,22 +1,22 @@
 [Unit]
-Description=Ralph Slack Bot
+Description=Ralphberry Slack Bot
 After=network.target
 
 [Service]
 Type=simple
 User=pi
 Group=pi
-WorkingDirectory=/home/pi/ralph-platform
+WorkingDirectory=/home/pi/ralphberry-platform
 Environment=NODE_ENV=production
-EnvironmentFile=/home/pi/ralph-platform/.env
-ExecStart=/usr/bin/node /home/pi/ralph-platform/apps/slack-bot/dist/index.js
+EnvironmentFile=/home/pi/ralphberry-platform/.env
+ExecStart=/usr/bin/node /home/pi/ralphberry-platform/apps/slack-bot/dist/index.js
 Restart=always
 RestartSec=10
 
 # Logging
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=ralph-bot
+SyslogIdentifier=ralphberry-bot
 
 # Security
 NoNewPrivileges=true

@@ -1,4 +1,4 @@
-import { getAllJobs } from "@ralph/db";
+import { getAllJobs } from "@ralphberry/db";
 import { JobList } from "@/components/job-list";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +12,7 @@ export default async function JobsPage() {
         <div className="sm:flex-auto">
           <h1 className="text-2xl font-semibold text-gray-900">Jobs</h1>
           <p className="mt-2 text-sm text-gray-700">
-            All Ralph jobs and their status
+            All Ralphberry jobs and their status
           </p>
         </div>
       </div>

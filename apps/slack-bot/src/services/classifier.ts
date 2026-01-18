@@ -1,4 +1,4 @@
-import type { Repo } from "@ralph/core";
+import type { Repo } from "@ralphberry/core";
 
 /**
  * Classify which repository a request is for based on keywords and description

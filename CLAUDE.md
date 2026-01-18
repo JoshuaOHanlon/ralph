@@ -1,8 +1,8 @@
-# Ralph Platform Instructions
+# Ralphberry Platform Instructions
 
 ## Overview
 
-Ralph is a modular autonomous AI agent platform for running Claude Code in isolated Docker containers. It provides Slack integration, a web dashboard, and a SQLite-backed job queue.
+Ralphberry is a modular autonomous AI agent platform for running Claude Code in isolated Docker containers. It provides Slack integration, a web dashboard, and a SQLite-backed job queue.
 
 ## Architecture
 
@@ -43,7 +43,7 @@ docker compose logs -f      # View logs
 
 | File | Purpose |
 |------|---------|
-| `ralph.sh` | Standalone loop for running without platform |
+| `ralphberry.sh` | Standalone loop for running without platform |
 | `prompt.md` | Instructions given to each Claude Code instance |
 | `prd.json.example` | Example PRD format |
 | `.env.example` | Environment variable template |
@@ -51,7 +51,7 @@ docker compose logs -f      # View logs
 
 ## Patterns
 
-- Jobs run in isolated Docker containers with the `ralph-base` image
+- Jobs run in isolated Docker containers with the `ralphberry-base` image
 - Each iteration spawns a fresh Claude Code instance with clean context
 - Memory persists via git history, `progress.txt`, and `prd.json`
 - Stories should be small enough to complete in one context window

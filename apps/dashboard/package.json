@@ -1,5 +1,5 @@
 {
-  "name": "@ralph/dashboard",
+  "name": "@ralphberry/dashboard",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,9 +11,9 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
-    "@ralph/core": "workspace:*",
-    "@ralph/db": "workspace:*",
-    "@ralph/queue": "workspace:*",
+    "@ralphberry/core": "workspace:*",
+    "@ralphberry/db": "workspace:*",
+    "@ralphberry/queue": "workspace:*",
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

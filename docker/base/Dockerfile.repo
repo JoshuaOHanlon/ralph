@@ -1,7 +1,7 @@
 # Template for per-repo Docker images
 # Customize this for each repository's specific dependencies
 
-ARG BASE_IMAGE=ralph-base:latest
+ARG BASE_IMAGE=ralphberry-base:latest
 FROM ${BASE_IMAGE}
 
 # Add repo-specific dependencies here
@@ -12,4 +12,4 @@ ARG REPO_NAME=default
 ENV REPO_NAME=${REPO_NAME}
 
 # Default command
-CMD ["ralph-runner"]
+CMD ["ralphberry-runner"]

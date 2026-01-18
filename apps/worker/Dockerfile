@@ -1,4 +1,4 @@
-# Ralph Worker Dockerfile
+# Ralphberry Worker Dockerfile
 FROM node:22-slim
 
 # Install Docker CLI for container management

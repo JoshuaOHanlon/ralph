@@ -1,4 +1,4 @@
-import type { CreateJob, Job, JobStatus, Prd, CreateJobLog, JobLog } from "@ralph/core";
+import type { CreateJob, Job, JobStatus, Prd, CreateJobLog, JobLog } from "@ralphberry/core";
 import {
   createJob,
   dequeueJob,
@@ -14,7 +14,7 @@ import {
   addJobLog,
   getJobLogs,
   deleteJobLogs,
-} from "@ralph/db";
+} from "@ralphberry/db";
 
 export interface QueueStats {
   pending: number;
@@ -157,4 +157,4 @@ export class JobQueue {
 export const queue = new JobQueue();
 
 // Re-export types
-export type { Job, JobStatus, Prd, CreateJob, JobLog, CreateJobLog } from "@ralph/core";
+export type { Job, JobStatus, Prd, CreateJob, JobLog, CreateJobLog } from "@ralphberry/core";

@@ -1,6 +1,6 @@
 {
   "display_information": {
-    "name": "Ralph",
+    "name": "Ralphberry",
     "description": "Autonomous AI agent for code development",
     "background_color": "#4A154B"
   },
@@ -11,13 +11,13 @@
       "messages_tab_read_only_enabled": false
     },
     "bot_user": {
-      "display_name": "Ralph",
+      "display_name": "Ralphberry",
       "always_online": true
     },
     "slash_commands": [
       {
-        "command": "/ralph",
-        "description": "Create a new task for Ralph",
+        "command": "/ralphberry",
+        "description": "Create a new task for Ralphberry",
         "usage_hint": "add dark mode to the design system",
         "should_escape": false
       },

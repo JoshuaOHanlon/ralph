@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { countRepos, countPendingJobs } from "@ralph/db";
+import { countRepos, countPendingJobs } from "@ralphberry/db";
 
 export const dynamic = "force-dynamic";
 

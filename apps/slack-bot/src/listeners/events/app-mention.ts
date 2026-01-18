@@ -1,5 +1,5 @@
 import type { AllMiddlewareArgs, SlackEventMiddlewareArgs } from "@slack/bolt";
-import { getEnabledRepos } from "@ralph/db";
+import { getEnabledRepos } from "@ralphberry/db";
 import { classifyRepo } from "../../services/classifier.js";
 import { startPrdConversation } from "../../services/prd-conversation.js";
 import { isChannelAllowed } from "../../services/channel-guard.js";
@@ -19,7 +19,7 @@ export async function handleAppMention({
 
   if (!text) {
     await say({
-      text: "Hi! Tell me what you'd like to do. Example: `@ralph add dark mode to the design system`",
+      text: "Hi! Tell me what you'd like to do. Example: `@ralphberry add dark mode to the design system`",
       thread_ts: event.thread_ts ?? event.ts,
     });
     return;

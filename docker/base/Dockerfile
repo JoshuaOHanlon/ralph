@@ -1,4 +1,4 @@
-# Ralph Base Image
+# Ralphberry Base Image
 # Contains Claude CLI and common dependencies for running jobs
 
 FROM node:22-slim
@@ -17,12 +17,12 @@ RUN npm install -g @anthropic-ai/claude-code
 # Create workspace directory
 RUN mkdir -p /workspace
 
-# Copy the ralph runner script
-COPY scripts/ralph-runner.sh /usr/local/bin/ralph-runner
-RUN chmod +x /usr/local/bin/ralph-runner
+# Copy the ralphberry runner script
+COPY scripts/ralphberry-runner.sh /usr/local/bin/ralphberry-runner
+RUN chmod +x /usr/local/bin/ralphberry-runner
 
 # Set working directory
 WORKDIR /workspace
 
 # Default command
-CMD ["ralph-runner"]
+CMD ["ralphberry-runner"]

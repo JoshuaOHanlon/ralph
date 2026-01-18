@@ -1,5 +1,5 @@
 import type { AllMiddlewareArgs, SlackActionMiddlewareArgs, ButtonAction } from "@slack/bolt";
-import { getRepoById } from "@ralph/db";
+import { getRepoById } from "@ralphberry/db";
 import { startPrdConversation } from "../../services/prd-conversation.js";
 
 export async function handleSelectRepo({

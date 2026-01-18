@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { JobLog, JobStatus } from "@ralph/core";
+import type { JobLog, JobStatus } from "@ralphberry/core";
 
 interface JobLogsProps {
   logs: JobLog[];

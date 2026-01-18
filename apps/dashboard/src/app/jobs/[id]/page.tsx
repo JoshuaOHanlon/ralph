@@ -1,4 +1,4 @@
-import { getJobById, getJobLogs, getRepoById } from "@ralph/db";
+import { getJobById, getJobLogs, getRepoById } from "@ralphberry/db";
 import { notFound } from "next/navigation";
 import { JobDetails } from "@/components/job-details";
 import { JobLogs } from "@/components/job-logs";

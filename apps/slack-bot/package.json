@@ -1,5 +1,5 @@
 {
-  "name": "@ralph/slack-bot",
+  "name": "@ralphberry/slack-bot",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -12,9 +12,9 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@ralph/core": "workspace:*",
-    "@ralph/db": "workspace:*",
-    "@ralph/queue": "workspace:*",
+    "@ralphberry/core": "workspace:*",
+    "@ralphberry/db": "workspace:*",
+    "@ralphberry/queue": "workspace:*",
     "@slack/bolt": "^4.2.0",
     "@slack/web-api": "^7.8.0"
   },

@@ -1,5 +1,5 @@
 {
-  "name": "@ralph/queue",
+  "name": "@ralphberry/queue",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -17,8 +17,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@ralph/core": "workspace:*",
-    "@ralph/db": "workspace:*"
+    "@ralphberry/core": "workspace:*",
+    "@ralphberry/db": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.7.3"

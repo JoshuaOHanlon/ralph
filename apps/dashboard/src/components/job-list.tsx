@@ -1,6 +1,6 @@
 "use client";
 
-import type { Job } from "@ralph/core";
+import type { Job } from "@ralphberry/core";
 
 interface JobListProps {
   jobs: Job[];

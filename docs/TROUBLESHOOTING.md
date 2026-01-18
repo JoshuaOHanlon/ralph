@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-Common issues and their solutions when running Ralph Platform.
+Common issues and their solutions when running Ralphberry Platform.
 
 ## Diagnostic Script
 
@@ -57,7 +57,7 @@ This usually means another process is accessing the database.
 
 ```bash
 # Find processes using the database
-lsof data/ralph.db
+lsof data/ralphberry.db
 
 # Or restart services
 docker compose restart
@@ -101,7 +101,7 @@ pnpm run db:migrate
 
 2. Check bot is in the channel:
    ```
-   /invite @Ralph
+   /invite @Ralphberryberry
    ```
 
 3. Check channel restrictions in `.env`:
@@ -123,10 +123,10 @@ pnpm run db:migrate
 
 ```bash
 # Build the base image
-docker build -t ralph-base:latest -f docker/base/Dockerfile .
+docker build -t ralphberry-base:latest -f docker/base/Dockerfile .
 
 # Tag for specific repo
-docker tag ralph-base:latest ralph-your-repo:latest
+docker tag ralphberry-base:latest ralph-your-repo:latest
 ```
 
 #### Jobs stuck in "pending"
@@ -152,7 +152,7 @@ Check the container logs:
 
 ```bash
 # Find the container ID
-docker ps -a | grep ralph
+docker ps -a | grep ralphberry
 
 # View logs
 docker logs CONTAINER_ID
@@ -258,9 +258,9 @@ docker compose logs -f worker
 docker compose logs -f dashboard
 
 # systemd
-journalctl -u ralph-bot -f
-journalctl -u ralph-worker -f
-journalctl -u ralph-dashboard -f
+journalctl -u ralphberry-bot -f
+journalctl -u ralphberry-worker -f
+journalctl -u ralphberry-dashboard -f
 ```
 
 ### View job logs
@@ -296,7 +296,7 @@ docker system prune -a
 
 ## Getting Help
 
-1. Check the [GitHub Issues](https://github.com/you/ralph-platform/issues)
+1. Check the [GitHub Issues](https://github.com/you/ralphberry-platform/issues)
 2. Run diagnostics and include the output
 3. Include relevant logs
 4. Describe what you expected vs what happened

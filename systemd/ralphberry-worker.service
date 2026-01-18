@@ -1,5 +1,5 @@
 [Unit]
-Description=Ralph Worker - Job Executor
+Description=Ralphberry Worker - Job Executor
 After=network.target docker.service
 Requires=docker.service
 
@@ -7,17 +7,17 @@ Requires=docker.service
 Type=simple
 User=pi
 Group=pi
-WorkingDirectory=/home/pi/ralph-platform
+WorkingDirectory=/home/pi/ralphberry-platform
 Environment=NODE_ENV=production
-EnvironmentFile=/home/pi/ralph-platform/.env
-ExecStart=/usr/bin/node /home/pi/ralph-platform/apps/worker/dist/index.js
+EnvironmentFile=/home/pi/ralphberry-platform/.env
+ExecStart=/usr/bin/node /home/pi/ralphberry-platform/apps/worker/dist/index.js
 Restart=always
 RestartSec=10
 
 # Logging
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=ralph-worker
+SyslogIdentifier=ralphberry-worker
 
 # Security
 NoNewPrivileges=true

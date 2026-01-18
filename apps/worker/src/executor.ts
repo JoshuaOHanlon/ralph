@@ -1,7 +1,7 @@
 import Docker from "dockerode";
 import { Readable } from "stream";
-import type { Job, Repo, Prd } from "@ralph/core";
-import type { JobQueue } from "@ralph/queue";
+import type { Job, Repo, Prd } from "@ralphberry/core";
+import type { JobQueue } from "@ralphberry/queue";
 
 const docker = new Docker();
 
@@ -143,7 +143,7 @@ export class JobExecutor {
   private async streamLogs(logStream: NodeJS.ReadableStream): Promise<void> {
     return new Promise((resolve, reject) => {
       let iteration = 0;
-      const iterationPattern = /Ralph Iteration (\d+) of/;
+      const iterationPattern = /Ralphberry Iteration (\d+) of/;
 
       logStream.on("data", async (chunk: Buffer) => {
         const text = chunk.toString("utf-8");

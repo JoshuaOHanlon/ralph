@@ -1,12 +1,12 @@
-# Ralph Platform
+# Ralphberry Platform
 
-Ralph is an autonomous AI agent platform that runs [Claude Code](https://claude.ai/code) in isolated Docker containers. It executes tasks defined in PRDs (Product Requirements Documents), with each iteration using a fresh Claude Code instance with clean context.
+Ralphberry is an autonomous AI agent platform that runs [Claude Code](https://claude.ai/code) in isolated Docker containers. It executes tasks defined in PRDs (Product Requirements Documents), with each iteration using a fresh Claude Code instance with clean context.
 
 Based on [Geoffrey Huntley's Ralph pattern](https://ghuntley.com/ralph/).
 
 ## Features
 
-- **Slack Integration**: Create tasks naturally via `@ralph` mentions or `/ralph` commands
+- **Slack Integration**: Create tasks naturally via `@ralphberry` mentions or `/ralphberry` commands
 - **Web Dashboard**: Monitor jobs, view logs, and manage repositories
 - **Docker Isolation**: Each job runs in a sandboxed container
 - **Multi-Repo Support**: Manage multiple repositories with keyword-based routing
@@ -25,8 +25,8 @@ Based on [Geoffrey Huntley's Ralph pattern](https://ghuntley.com/ralph/).
 ### Installation
 
 ```bash
-git clone https://github.com/you/ralph-platform
-cd ralph-platform
+git clone https://github.com/you/ralphberry-platform
+cd ralphberry-platform
 ./setup.sh
 ```
 
@@ -41,11 +41,11 @@ pnpm run build
 docker compose up -d
 ```
 
-### Using Ralph
+### Using Ralphberry
 
 **Via Slack:**
 ```
-@ralph add dark mode to the design system
+@ralphberry add dark mode to the design system
 ```
 
 **Via Dashboard:**
@@ -84,7 +84,7 @@ Open http://localhost:3001
 ## Project Structure
 
 ```
-ralph-platform/
+ralphberry-platform/
 ├── apps/
 │   ├── slack-bot/      # Bolt.js Slack integration
 │   ├── dashboard/      # Next.js web UI
@@ -108,17 +108,17 @@ ralph-platform/
 
 ## Standalone Usage
 
-The original standalone Ralph loop is still available:
+The original standalone Ralphberry loop is still available:
 
 ```bash
 # Create a PRD
 /prd create a task priority system
 
-# Convert to Ralph format
-/ralph convert tasks/prd-task-priority.md
+# Convert to Ralphberry format
+/ralphberry convert tasks/prd-task-priority.md
 
-# Run Ralph loop
-./ralph.sh [max_iterations]
+# Run Ralphberry loop
+./ralphberry.sh [max_iterations]
 ```
 
 ## Critical Concepts
@@ -139,7 +139,7 @@ Each story should be completable in one context window. Right-sized stories:
 
 ### Feedback Loops
 
-Ralph requires feedback loops to work effectively:
+Ralphberry requires feedback loops to work effectively:
 - Typecheck catches type errors
 - Tests verify behavior
 - CI must stay green
