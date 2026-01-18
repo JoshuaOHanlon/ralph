@@ -18,6 +18,9 @@ data/
 .env.local
 .env.*.local
 
+# Claude OAuth credentials
+.claude-hub/
+
 # Logs
 logs/
 *.log

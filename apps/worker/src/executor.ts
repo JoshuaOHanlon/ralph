@@ -7,6 +7,16 @@ const docker = new Docker();
 
 const MEMORY_LIMIT = process.env.DOCKER_MEMORY_LIMIT ?? "4g";
 const CPU_LIMIT = parseFloat(process.env.DOCKER_CPU_LIMIT ?? "2");
+const CLAUDE_AUTH_MODE = process.env.CLAUDE_AUTH_MODE ?? "api_key";
+
+function resolveAuthDir(): string {
+  const authDir = process.env.CLAUDE_AUTH_DIR ?? `${process.env.HOME}/.claude-hub/auth`;
+  // Expand ~ to home directory
+  if (authDir.startsWith("~")) {
+    return authDir.replace("~", process.env.HOME ?? "");
+  }
+  return authDir;
+}
 
 interface ExecutorConfig {
   memoryLimit: string;
@@ -54,19 +64,35 @@ export class JobExecutor {
   async execute(): Promise<void> {
     const workspaceDir = `/repos/${this.repo.slug}`;
 
+    // Build environment variables based on auth mode
+    const env: string[] = [
+      `MAX_ITERATIONS=${this.job.maxIterations}`,
+      `REPO_NAME=${this.repo.name}`,
+    ];
+
+    // Only pass API key if not using OAuth
+    if (CLAUDE_AUTH_MODE !== "oauth") {
+      env.push(`ANTHROPIC_API_KEY=${process.env.ANTHROPIC_API_KEY}`);
+    }
+
+    // Build volume binds
+    const binds: string[] = [
+      `${workspaceDir}:/workspace`,
+      `${process.env.HOME}/.ssh:/root/.ssh:ro`,
+    ];
+
+    // Mount OAuth credentials if using OAuth mode
+    if (CLAUDE_AUTH_MODE === "oauth") {
+      const authDir = resolveAuthDir();
+      binds.push(`${authDir}:/home/node/.claude:ro`);
+    }
+
     // Create container
     this.container = await docker.createContainer({
       Image: this.repo.dockerImage,
-      Env: [
-        `MAX_ITERATIONS=${this.job.maxIterations}`,
-        `REPO_NAME=${this.repo.name}`,
-        `ANTHROPIC_API_KEY=${process.env.ANTHROPIC_API_KEY}`,
-      ],
+      Env: env,
       HostConfig: {
-        Binds: [
-          `${workspaceDir}:/workspace`,
-          `${process.env.HOME}/.ssh:/root/.ssh:ro`,
-        ],
+        Binds: binds,
         Memory: parseMemoryLimit(this.config.memoryLimit),
         NanoCpus: this.config.cpuLimit * 1e9,
         NetworkMode: this.config.networkMode,

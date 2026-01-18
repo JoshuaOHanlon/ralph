@@ -126,7 +126,31 @@ setup_environment() {
   cp "$SCRIPT_DIR/.env.example" "$SCRIPT_DIR/.env"
   print_success "Created .env from template"
 
-  # Get Anthropic API key
+  # Choose authentication mode
+  echo ""
+  print_info "Choose Claude authentication method:"
+  echo "  1) API Key - Pay-per-use with Anthropic API key (recommended for most users)"
+  echo "  2) OAuth - Use Claude Max subscription (requires interactive login)"
+  echo ""
+  read -p "  Enter choice (1 or 2, default: 1): " auth_choice
+
+  case "$auth_choice" in
+    2)
+      setup_oauth_auth
+      ;;
+    *)
+      setup_api_key_auth
+      ;;
+  esac
+
+  echo ""
+}
+
+# Setup API key authentication
+setup_api_key_auth() {
+  sed -i.bak "s|CLAUDE_AUTH_MODE=.*|CLAUDE_AUTH_MODE=api_key|" "$SCRIPT_DIR/.env"
+  rm -f "$SCRIPT_DIR/.env.bak"
+
   echo ""
   print_info "Enter your Anthropic API key (from https://console.anthropic.com/):"
   read -s -p "  ANTHROPIC_API_KEY: " api_key
@@ -135,12 +159,38 @@ setup_environment() {
   if [ -n "$api_key" ]; then
     sed -i.bak "s|ANTHROPIC_API_KEY=.*|ANTHROPIC_API_KEY=$api_key|" "$SCRIPT_DIR/.env"
     rm -f "$SCRIPT_DIR/.env.bak"
-    print_success "Anthropic API key configured"
+    print_success "API key authentication configured"
   else
     print_error "No API key provided - you'll need to add it manually to .env"
   fi
+}
 
+# Setup OAuth authentication
+setup_oauth_auth() {
+  print_info "Setting up OAuth authentication with Claude Max..."
   echo ""
+  print_info "This requires an interactive browser login."
+  print_info "Rate limits apply: ~50-200 prompts/5hrs (Max 5x) or ~200-800 (Max 20x)"
+  echo ""
+
+  read -p "  Continue with OAuth setup now? (Y/n): " continue_oauth
+
+  if [[ "$continue_oauth" =~ ^[Nn]$ ]]; then
+    print_info "Skipping OAuth setup - run ./scripts/setup-claude-auth.sh later"
+    print_info "Falling back to API key mode"
+    setup_api_key_auth
+    return
+  fi
+
+  # Run the OAuth setup script
+  if [ -x "$SCRIPT_DIR/scripts/setup-claude-auth.sh" ]; then
+    "$SCRIPT_DIR/scripts/setup-claude-auth.sh"
+  else
+    print_error "OAuth setup script not found or not executable"
+    print_info "Run: chmod +x ./scripts/setup-claude-auth.sh && ./scripts/setup-claude-auth.sh"
+    print_info "Falling back to API key mode"
+    setup_api_key_auth
+  fi
 }
 
 # Setup Slack app

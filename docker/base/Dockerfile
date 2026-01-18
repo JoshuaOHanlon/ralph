@@ -17,6 +17,11 @@ RUN npm install -g @anthropic-ai/claude-code
 # Create workspace directory
 RUN mkdir -p /workspace
 
+# Create Claude config directory for OAuth credentials
+# This will be mounted read-only when using OAuth mode
+RUN mkdir -p /home/node/.claude && \
+    chown -R node:node /home/node/.claude
+
 # Copy the ralphberry runner script
 COPY scripts/ralphberry-runner.sh /usr/local/bin/ralphberry-runner
 RUN chmod +x /usr/local/bin/ralphberry-runner

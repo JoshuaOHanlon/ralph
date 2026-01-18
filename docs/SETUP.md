@@ -62,12 +62,53 @@ cd ralphberry
 cp .env.example .env
 ```
 
-Edit `.env` with your values:
+Edit `.env` with your values. Choose one authentication method:
+
+#### Option A: Anthropic API Key (Default)
 
 ```bash
+# Authentication mode
+CLAUDE_AUTH_MODE=api_key
+
 # Required: Anthropic API key
 ANTHROPIC_API_KEY=sk-ant-your-key-here
+```
 
+#### Option B: Claude Max Subscription (OAuth)
+
+```bash
+# Authentication mode
+CLAUDE_AUTH_MODE=oauth
+
+# OAuth credentials directory (set automatically by setup script)
+CLAUDE_AUTH_DIR=~/.claude-hub/auth
+```
+
+To set up OAuth authentication:
+
+```bash
+# Run the setup script (requires interactive browser login)
+./scripts/setup-claude-auth.sh
+```
+
+This will:
+1. Run `claude login` to authenticate with your Claude Max subscription
+2. Copy OAuth credentials to `~/.claude-hub/auth`
+3. Update your `.env` file automatically
+
+**Rate limits for Claude Max:**
+- Max 5x: ~50-200 prompts per 5 hours
+- Max 20x: ~200-800 prompts per 5 hours
+- Usage is shared with Claude web interface
+
+**Token refresh:**
+- Access tokens refresh automatically
+- Refresh tokens may expire after extended periods
+- Re-run `./scripts/setup-claude-auth.sh` if authentication fails
+
+#### Slack Configuration (Both Modes)
+
+```bash
 # Required for Slack: Get from https://api.slack.com/apps
 SLACK_BOT_TOKEN=xoxb-...
 SLACK_SIGNING_SECRET=...
